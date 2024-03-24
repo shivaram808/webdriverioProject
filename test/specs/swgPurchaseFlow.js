@@ -26,13 +26,11 @@ describe('Swag Labs Purchase Flow', () => {
         currentUrl = await driver.getUrl()
         expect(currentUrl).toContain('cart')
         console.log('Added required items to Cart Page')
-
     })
 
     it('Cart Checkout',async() => {
-
+        
         //Cart checkout
-
         await swagCart.ClickCheckout();
         currentUrl = await driver.getUrl();
         expect(currentUrl).toContain('checkout')

@@ -4,6 +4,8 @@ const swagInventory = require('../pageobjects/swagInventory.page');
 const swagCart = require('../pageobjects/swagCart.page');
 const swagCheckout = require('../pageobjects/swagCheckout1.page');
 const checkTwoFinish = require('../pageobjects/swagCheckout2.page');
+const logindata = require('../data/logindata.json');
+
 describe('Swag Labs Purchase Flow', () => {
 
 
@@ -12,7 +14,9 @@ describe('Swag Labs Purchase Flow', () => {
     it('Swag Labs Login',async() => {
 
         await browser.maximizeWindow();
-        await swagLogin.swgLogin('standard_user','secret_sauce')       
+        await swagLogin.swgLogin(logindata.username,logindata.password)
+        console.log("Login Name is : "+logindata.username)     
+        console.log("Login Password is : "+logindata.password)    
         currentUrl = await driver.getUrl()
         expect(currentUrl).toContain('inventory')
         console.log('Successfully logged into to SwagLABS!!')
